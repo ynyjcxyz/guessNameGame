@@ -24,21 +24,21 @@ public class guessName {
         //generate a random number from 0 to the length of the array, could be 0 since it's an array unit
         int randomTitleNumber = (int)( numberOfMovie * Math.random() );
         //convert Object array[randomTitleNumber] to string variable
-        //String guessingValue = array[randomTitleNumber].toString();
-        String guessingValue = "room";
+        String guessingValue = array[randomTitleNumber].toString();
+        //String guessingValue = "room";
         //System.out.println(guessingValue);
         int length = guessingValue.length();
         char[]zero = new char[length];
+        char[]judgeArray = guessingValue.toCharArray();
         for(int n = 0; n < length ; n++){
             zero[n]=' ';
         }
 
         for(int i= 0 ; i<10 ; i++) {
-            System.out.print("Please type a letter to guess:");
+            System.out.print("Please type a letter to guess(you have 10 times to try):");
             Scanner myInput = new Scanner(System.in);
             char letterInput = myInput.next().charAt(0);
             char[]displayArray = guessingValue.toCharArray();
-            char[]judgeArray = guessingValue.toCharArray();
             for(int j = 0 ; j<length ; j++){
                 if(letterInput != guessingValue.charAt(j)){
                     displayArray[j] = '_';
@@ -47,12 +47,12 @@ public class guessName {
                     judgeArray[j] = ' ';
                 }
             }
-            System.out.println(displayArray);
             if(Arrays.equals(judgeArray,zero)){
-                System.out.println(Arrays.equals(judgeArray,zero));
+                System.out.println("You win the game!");
                 break;
             }
+            //System.out.println("[judgeArray:"+new String(judgeArray)+", zero:"+new String(zero)+"]");
+            System.out.println(displayArray);
         }
-        System.out.println("Sorry,only 10 times to try");
     }
 }
